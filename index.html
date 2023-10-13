@@ -3,40 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Story Reading</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div id="stories">
-        <h1>Stories</h1>
-        <ul id="story-list"></ul>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        // Fetch stories from the server
-        $.get("/api/stories", function(data) {
-            data.forEach(story => {
-                $("#story-list").append("<li>" + story + "</li>");
-            });
-        });
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Story Reading App</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h1>Stories</h1>
     <ul id="story-list"></ul>
-
-    <h2>Record Your Voice</h2>
-    <button id="record-button">Start Recording</button>
-    <audio id="audio" controls></audio>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -47,10 +19,6 @@
                     $("#story-list").append("<li>" + story + "</li>");
                 });
             });
-
-            // TODO: Implement recording functionality using JavaScript
-            // You'll need to use the Web Speech API or a recording library.
-            // Record the user's voice and provide a way to compare it with the stories.
         });
     </script>
 </body>

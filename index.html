@@ -1,35 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Very Short Stories with Morals</title>
-  <style>
-    /* Add your CSS styles for story cards here */
-    .story-card {
-      border: 1px solid #ccc;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Reading</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div id="app">
-    <h1>Very Short Stories with Morals</h1>
-
-    <!-- Display each story as a card -->
-    <div id="story-card" class="story-card">
-      <h2 id="story-title"></h2>
-      <p id="story-content"></p>
-      <button id="checkAccuracy" onclick="checkAccuracy()">Check Accuracy</button>
-      <p id="accuracyResult">Accuracy Result: </p>
+    <div id="stories">
+        <h1>Stories</h1>
+        <ul id="story-list"></ul>
     </div>
 
-    <!-- Open Mic feature -->
-    <button id="startRecording">Start Recording</button>
-    <p id="spokenText">Spoken Text: </p>
-  </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Fetch stories from the server
+        $.get("/api/stories", function(data) {
+            data.forEach(story => {
+                $("#story-list").append("<li>" + story + "</li>");
+            });
+        });
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Reading App</title>
+</head>
+<body>
+    <h1>Stories</h1>
+    <ul id="story-list"></ul>
 
-  <script src="script.js"></script>
+    <h2>Record Your Voice</h2>
+    <button id="record-button">Start Recording</button>
+    <audio id="audio" controls></audio>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Fetch stories from the server
+            $.get("/api/stories", function(data) {
+                data.forEach(story => {
+                    $("#story-list").append("<li>" + story + "</li>");
+                });
+            });
+
+            // TODO: Implement recording functionality using JavaScript
+            // You'll need to use the Web Speech API or a recording library.
+            // Record the user's voice and provide a way to compare it with the stories.
+        });
+    </script>
 </body>
 </html>
